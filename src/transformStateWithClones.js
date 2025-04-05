@@ -18,14 +18,17 @@ function transformStateWithClones(state, actions) {
 
       case 'removeProperties':
         for (const value of action.keysToRemove) {
-          Object.assign(nState, delete nState[value]);
+          delete nState[value];
         }
         break;
 
       case 'clear':
         for (const key in nState) {
-          Object.assign(nState, delete nState[key]);
+          delete nState[key];
         }
+        break;
+      default:
+        objArray.push({ ...nState });
     }
     objArray.push({ ...nState });
   }
